@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(models.State);
 
       // hasOne -- OneToOne
-      Order.hasOne(models.Shipping);
+      Order.hasOne(models.Shipping, {
+        foreignKey: 'orderId',
+        as: 'shippings'
+      });
 
       // hasMany -- OneToMany
       Order.hasMany(models.OrderDetail, {

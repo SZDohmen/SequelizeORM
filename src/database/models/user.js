@@ -11,15 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
 
-      // belongsTo -- OneToOne
-      User.belongsTo(models.Address);
-
       // hasMany -- OneToMany
       User.hasMany(models.Order, {
         foreignKey: 'userId',
         as: 'orders'
       });
-      
+
+      // belongsTo -- OneToOne
+      User.belongsTo(models.Address);
+
       // belongsToMany -- ManyToMany
       User.belongsToMany(models.Rol, {
         foreignKey: 'userId',
